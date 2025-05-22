@@ -1,0 +1,16 @@
+include header
+html(lang="en")
+  head
+    title All Art
+    link(rel='stylesheet', type='text/css', href='/styles.css') 
+
+  body
+    h1 All Artworks
+
+    .artwork-grid
+      each artwork in galleryArray
+        .artwork
+          a(href=`/art/${artwork._id}`)
+            img.artwork-poster(src=artwork.Poster, alt=artwork.Title)
+          h2= artwork.Title
+          p Artist: #{artwork.Artist}

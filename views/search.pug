@@ -1,0 +1,26 @@
+include header
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title Artworks
+    link(rel='stylesheet', href='/styles.css')
+    
+  body
+    // Search Form
+    form(action="/search" method="get")
+      label(for="title") Title
+      input(type="text" id="title" name="title" value=title)
+      label(for="artist") Artist
+      input(type="text" id="artist" name="artist" value=artist)
+      label(for="category") Category
+      input(type="text" id="category" name="category" value=category)
+      button(type="submit", id="searchButton") Search
+
+    if artworks.length > 0
+      each artwork in artworks
+        a(href=`/art/${artwork._id}`)
+          img.user-artwork-poster(src=artwork.Poster, alt=artwork.Title)
+    else
+      p No artworks found.
+
+    script(src="client.js" defer)

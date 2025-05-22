@@ -1,0 +1,14 @@
+include header
+html
+  head
+    title Liked Artworks
+    link(rel='stylesheet', href='/styles.css')
+  body
+    h1 Liked Artworks
+    if Likes.length > 0
+      ul
+        each like in Likes
+          a(href=`/art/${like._id}`)
+            img.user-artwork-poster(src=like.Poster, alt=like.Title)
+    else
+      p No liked artworks

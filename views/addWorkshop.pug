@@ -1,0 +1,23 @@
+include header
+script(src="/client.js")
+html(lang="en")
+  head
+    title Add Art
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .add-workshop-container
+      label(for='wtitle') Title:
+      input(type='text', id='wtitle', name='wtitle')
+
+      label(for='wdescription') Description 
+      input(type='text', id='wdescription', name='wdescription')
+
+      label(for='wdate') Date: 
+      input(type='text', id='wdate', name='wdate')
+
+      label(for='wlocation') Location:
+      input(type='text', id='wlocation', name='wlocation')
+      
+      button(type='button', id='addButton', onclick='addWorkshop()') Add Workshop!
+script.
+  let wArtist = !{JSON.stringify(session.username)};

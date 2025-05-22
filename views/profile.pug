@@ -1,0 +1,21 @@
+include header
+html
+  head
+    script(src='/client.js')
+    title= `Profile - #{session.username}`
+    link(rel="stylesheet", href="/styles.css")
+  body
+    h1 Your Profile
+    p Username: #{session.username}
+
+    if(session.isArtist)
+      div#switchToUser
+        button(type="button", onclick="switchToUser()") Switch to Patron
+      a#add-art-link(href='/addArt')
+        button#add-art-button(type='button') Add Art
+
+      a#add-workshop-link(href='/addWorkshop')
+        button#add-workshop-button(type='button') Add Workshop
+    else 
+      div#switchToArtist
+        button(type="button", onclick="switchToArtist()") Switch to Artist

@@ -1,0 +1,19 @@
+script(src="/client.js")
+html(lang="en")
+  head
+    title Login
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .login-container
+      h2 Login
+      form(action="/login", method="post")
+        label(for="username") Username:
+        input(type="text", id="username", name="username", required)
+        br
+        label(for="password") Password:
+        input(type="password", id="password", name="password", required)
+        br
+        button(type='submit') Login
+      p
+        | Don't have an account? 
+        a(href="/registerUser") Sign up here.

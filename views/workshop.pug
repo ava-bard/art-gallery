@@ -1,0 +1,31 @@
+include header
+script(src="/client.js")
+html
+  head
+    title Workshop Page - #{workshop.Title}
+    link(rel='stylesheet', type='text/css', href='/styles.css') 
+
+  body
+    p Date: #{workshop.Date}
+
+    p Description: #{workshop.Description}
+
+    p Location: #{workshop.Location}
+
+    p
+      | Hosted by:
+      a(href=`/artist/${artist.username}`)= artist.username
+    
+    if enrolledUsernames && enrolledUsernames.length > 0
+      p Enrolled Users
+      ul
+        each username in enrolledUsernames
+          li
+            p #{username}
+
+    if (session && !session.isArtist)
+      button(type='button', id='registerButton', onclick='registerForWorkshop()') Register for Workshop
+
+script.
+  let user = !{JSON.stringify(session.username)};
+  let workID = !{JSON.stringify(workshop._id)};

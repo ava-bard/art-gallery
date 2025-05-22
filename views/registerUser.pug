@@ -1,0 +1,17 @@
+html(lang="en")
+  head
+    title Register User
+    link(rel='stylesheet', type='text/css', href='/styles.css') 
+    script(src='/client.js')
+
+  body
+    h1 Register User
+
+    form(id="registrationForm")
+      label(for="username") Username:
+      input(type="text", id="username", name="username", required)
+
+      label(for="password") Password:
+      input(type="password", id="password", name="password", required)
+
+      button(type="button", onclick="registerUser()") Register

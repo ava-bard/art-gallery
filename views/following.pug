@@ -1,0 +1,14 @@
+include header
+
+link(rel='stylesheet', href='/styles.css') 
+
+body
+  h1 Following
+
+  if following.length > 0
+    ul
+      each follow in followingUsernames
+        li
+            a(href=`/artist/${follow.username}`)= follow.username
+  else
+    p Not following anybody yet.

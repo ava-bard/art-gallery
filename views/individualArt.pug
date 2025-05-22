@@ -1,0 +1,48 @@
+include header
+script(src="/client.js")
+html
+  head
+    title= artwork.Title + ' by ' + artwork.Artist
+    link(rel="stylesheet", href="/styles.css")
+  body
+    .artwork
+      img.artwork-poster(src=artwork.Poster, alt=artwork.Title)
+
+      h2= artwork.Title
+      p 
+        | Artist: 
+        a(href=`/artist/${artwork.Artist}`)= artwork.Artist
+        br
+        | Year: #{artwork.Year}
+        br
+        | Category: #{artwork.Category}
+        br
+        | Medium: #{artwork.Medium}
+        br
+        | Description: #{artwork.Description}
+
+      // Display likes
+      h3 Likes
+      if artwork.Likes.length > 0
+        ul
+          each likeId in artwork.Likes
+            li= likeId.username
+
+      if session && artwork.Artist !== session.username
+        input(type='hidden', id='artworkId', value=artwork._id)
+        button(type='button', id='addlike', onclick='addLike()') Add Like
+        br
+        br
+        input(type='hidden', id='artworkId', value=artwork._id)
+        button(type='button', id='removeLike', onclick='removeLike()') Remove Like
+
+      h3 Reviews
+      if artwork.Reviews.length > 0
+        ul
+          each reviewId in artwork.Reviews
+            li= `${reviewId.user.username}: ${reviewId.comment}`
+
+      if session && artwork.Artist !== session.username
+        input(type='hidden', id='artworkId', value=artwork._id)
+        textarea(id='reviewContent', placeholder='Write a review...')
+        button(type='button', id='addreview', onclick='addReview()') Add Review

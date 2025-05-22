@@ -1,0 +1,6 @@
+Installing, Initializing, and Running the database and server:
+Extract the folder and in command prompt, go to the directory of the folder
+Write “npm install express express-session mongoose morgan pug”
+Then, type in the command “node gallery-init.js”, this will initialize the database
+After the gallery has been initialized (the command prompt will say if it has), run the command “node server.js”
+Click the link or type “localhost:3000” into your browser, and you can now run the code!

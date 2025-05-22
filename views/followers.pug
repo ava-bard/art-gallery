@@ -1,0 +1,11 @@
+include header
+link(rel='stylesheet', href='/styles.css') 
+body
+  h1 Followers
+
+  if followers.length > 0
+    ul
+      each follower in followerUsernames
+        li= follower.username
+  else
+    p No followers yet.

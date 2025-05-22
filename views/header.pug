@@ -1,0 +1,21 @@
+html
+  head
+    link(rel="stylesheet", href="styles.css")
+  body
+    .header
+      ul.header-nav
+        li
+          img.logo(src="https://cdn.discordapp.com/attachments/1074843353386078269/1183580754064719912/B.png?ex=6588da79&is=65766579&hm=2e2b7e47c97869f43bac5211bb006d34fd6a4ef963faa81066871671c87d5947", alt="Logo")
+        li: a(href='/allArt') Browse
+        li: a(href='/profile') Profile
+        li: a(href='/followers') Followers
+        li: a(href='/following') Following
+        li: a(href='/search') Find Artwork
+        li: a(href='/liked') Liked
+        li: a(href='/reviewed') Reviewed
+        li: a(href='/notifications') Notifications
+        li(style='margin-left: auto;')
+          // Check if the user is logged in
+          if session.loggedin
+            form(action='/logout', method='get')
+              button#logout-button(type='submit') Logout

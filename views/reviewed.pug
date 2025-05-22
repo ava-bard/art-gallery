@@ -1,0 +1,20 @@
+include header
+script(src="/client.js")
+html
+  head
+    title Reviewed Artworks
+    link(rel='stylesheet', href='/styles.css')
+  body
+    h1 Reviewed Artworks
+    if Reviews.length > 0
+      ul
+        each review in Reviews
+          li
+            button#for-review(type='button', onclick=`openReview('/art/${review.gallery}')`)= review.comment
+            br
+            br
+            button#delete-button(type='button', onclick=`deleteReview('${review._id}')`) Delete
+    else
+      p No reviewed artworks
+script.
+  let user = !{JSON.stringify(session.username)};

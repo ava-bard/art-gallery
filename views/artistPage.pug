@@ -1,0 +1,44 @@
+include header
+
+doctype html
+script(src="/client.js")
+html(lang="en")
+  head
+    title Artist Page - #{artist.username}
+    link(rel='stylesheet', href='/styles.css') 
+
+  body
+    div.container
+      div.header
+        h1 Artist Page - #{artist.username}
+
+      div.content
+        h2 Artist Details:
+          p
+            | Username: #{artist.username}
+            br
+            | Followers: #{artist.followers.length}
+
+        h2 Artworks
+        each artwork in artworks
+          a(href=`/art/${artwork._id}`)
+            img.user-artwork-poster(src=artwork.Poster, alt=artwork.Title)
+            
+        h2 Workshops
+        each workshop in workshops
+          p
+            a(href=`/workshop/${workshop._id}`) Workshop: #{workshop.Title}
+
+        h2 Followers
+        each follower in followers
+          p Follower: #{follower}
+
+        if !session.isArtist && !artist.followers.includes(ID)
+          button(type='button', id='followButton', onclick='follow()') Follow!
+
+        if !session.isArtist && artist.followers.includes(ID)
+          button(type='button', id='unfollowButton', onclick='unfollow()') Unfollow
+      
+script.
+  let artist = !{JSON.stringify(artist.username)};
+  let user = !{JSON.stringify(session.username)};

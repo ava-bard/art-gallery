@@ -1,0 +1,18 @@
+include header
+
+html
+  head
+    title Notifications Page
+    link(rel='stylesheet', href='/styles.css')
+  body
+    h1 Notifications
+    if notifications.length > 0
+      ul
+        each notification in notifications
+          li
+            if notification.type === 'gallery'
+              a(href=`/art/${notification.gallery}`)= notification.content
+            else if notification.type === 'workshop'
+              a(href=`/workshop/${notification.workshop}`)= notification.content
+    else
+      p No notifications
